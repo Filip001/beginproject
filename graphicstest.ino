@@ -1,5 +1,6 @@
 /***************************************************
   This is a library for the Adafruit 1.8" SPI display.
+  copied by Filip@Wilfi.be for study purposes of the Arduino Environment
 
 This library works with the Adafruit 1.8" TFT Breakout w/SD card
   ----> http://www.adafruit.com/products/358
@@ -17,48 +18,28 @@ as well as Adafruit raw 1.8" TFT display
   please support Adafruit and open-source hardware by purchasing
   products from Adafruit!
 
-  Written by Limor Fried/Ladyada for Adafruit Industries.
+  Origanally Written by Limor Fried/Ladyada for Adafruit Industries.
   MIT license, all text above must be included in any redistribution
- ****************************************************/
+ ****************************************************
+ Changes made are only temporaly 
+ and marked with '@Filip' /
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library
 #include <SPI.h>
-
-
-// For the breakout, you can use any 2 or 3 pins
 // These pins will also work for the 1.8" TFT shield
 #define TFT_CS     10
-#define TFT_RST    9  // you can also connect this to the Arduino reset
-// in which case, set this #define pin to 0!
+#define TFT_RST    9  
 #define TFT_DC     8
-
-// Option 1 (recommended): must use the hardware SPI pins
-// (for UNO thats sclk = 13 and sid = 11) and pin 10 must be
-// an output. This is much faster - also required if you want
-// to use the microSD card (see the image drawing example)
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);
-
-// Option 2: use any pins but a little slower!
-#define TFT_SCLK 13   // set these to be whatever pins you like!
-#define TFT_MOSI 11   // set these to be whatever pins you like!
-//Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
-
-
+#define TFT_SCLK 13   
+#define TFT_MOSI 11   
 float p = 3.1415926;
-
 void setup(void) {
   Serial.begin(9600);
-  Serial.print("Hello! ST7735 TFT Test");
-
-  // Use this initializer if you're using a 1.8" TFT
+  Serial.print("Hoi! ST7735 TFT Test");
   tft.initR(INITR_BLACKTAB);   // initialize a ST7735S chip, black tab
-
-  // Use this initializer (uncomment) if you're using a 1.44" TFT
-  //tft.initR(INITR_144GREENTAB);   // initialize a ST7735S chip, black tab
-
-  Serial.println("Initialized");
-
+  Serial.println("Opgestart.");
   uint16_t time = millis();
   tft.fillScreen(ST7735_BLACK);
   time = millis() - time;
@@ -66,9 +47,9 @@ void setup(void) {
   Serial.println(time, DEC);
   delay(500);
 
-  // large block of text
+  // zin
   tft.fillScreen(ST7735_BLACK);
-  testdrawtext("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur adipiscing ante sed nibh tincidunt feugiat. Maecenas enim massa, fringilla sed malesuada et, malesuada sit amet turpis. Sed porttitor neque ut ante pretium vitae malesuada nunc bibendum. Nullam aliquet ultrices massa eu hendrerit. Ut sed nisi lorem. In vestibulum purus a tortor imperdiet posuere. ", ST7735_WHITE);
+  testdrawtext("Temperatuur meter 4 sensoren ", ST7735_WHITE);
   delay(1000);
 
   // tft print function!
