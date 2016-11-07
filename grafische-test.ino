@@ -22,7 +22,7 @@ as well as Adafruit raw 1.8" TFT display
   MIT license, all text above must be included in any redistribution
  ****************************************************
  Changes made are only temporaly 
- and marked with '@Filip' /
+ and marked with '@Filip' */
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library
